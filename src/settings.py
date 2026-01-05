@@ -5,6 +5,7 @@ class Settings(BaseSettings):
   ADMINS: str
   GROUP_LINK: str
   GROUP_ID: int
+  LANG: str
 
   model_config = SettingsConfigDict(env_file=".env")
 

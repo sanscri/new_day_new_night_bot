@@ -1,5 +1,4 @@
 import asyncio
-import locale
 from datetime import datetime
 from aiogram.types import BotCommand, BotCommandScopeDefault
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -9,8 +8,6 @@ from start_router import start_router
 from help_router import help_router
 from settings import settings
 
-
-locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
 
 async def set_commands():
     commands = [BotCommand(command='start', description='Старт'),
@@ -38,8 +35,7 @@ async def stop_bot():
 async def send_daily_message():
     now = datetime.now()
     date_string = now.strftime("%d.%m.%Y")
-    day_of_week = now.strftime('%A')
-    text = f"<blockquote>Я заглянул в календарь...</blockquote>\n\n<blockquote>...и увидел, что сегодня {date_string} ({day_of_week}).</blockquote>"
+    text = f"<blockquote>Я заглянул в календарь...</blockquote>\n\n<blockquote>...и увидел, что сегодня {date_string}.</blockquote>"
     await bot.send_message(chat_id=settings.GROUP_ID, 
                            text=text)
 
@@ -52,7 +48,7 @@ async def main():
 
     scheduler = AsyncIOScheduler(timezone="Asia/Novosibirsk")
     scheduler.start()
-    scheduler.add_job(send_daily_message, 'cron', hour=7, minute=1)
+    scheduler.add_job(send_daily_message, 'cron', hour=16, minute=14)
     try:
         await bot.delete_webhook(drop_pending_updates=True)
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
