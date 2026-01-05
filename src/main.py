@@ -10,7 +10,7 @@ from help_router import help_router
 from settings import settings
 
 
-locale.setlocale(locale.LC_TIME, 'ru_RU')
+locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
 
 async def set_commands():
     commands = [BotCommand(command='start', description='Старт'),
