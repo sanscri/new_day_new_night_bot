@@ -35,7 +35,7 @@ async def stop_bot():
 async def send_daily_message():
     now = datetime.now()
     date_string = now.strftime("%d.%m.%Y")
-    text = f"<blockquote>Я заглянул в календарь...</blockquote>\n\n<blockquote>...и увидел, что сегодня {date_string}.</blockquote>"
+    text = f"<blockquote>Я посмотрел на календарь...</blockquote>\n<blockquote>...и увидел, что сегодня {date_string}.</blockquote>"
     await bot.send_message(chat_id=settings.GROUP_ID, 
                            text=text)
 
