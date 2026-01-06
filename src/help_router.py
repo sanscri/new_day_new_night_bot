@@ -19,6 +19,6 @@ def help_kb():
 @help_router.message(Command("help"))
 async def cmd_help(message: Message):
   
-    help = f"Бот каждый день смотрит в каллендарь и говрит, какой сегодня день."
+    help = f"Бот каждый день смотрит в календарь и говрит, какой сегодня день."
     await message.answer(help,
                               reply_markup=help_kb())

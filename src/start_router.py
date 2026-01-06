@@ -17,6 +17,6 @@ def start_kb():
 
 @start_router.message(CommandStart())
 async def cmd_start(message: Message):
-  greeting = "Бот каждый день смотрит в каллендарь и говрит, какой сегодня день."
+  greeting = "Бот каждый день смотрит в календарь и говрит, какой сегодня день."
   await message.answer(greeting, reply_markup=start_kb())
    
